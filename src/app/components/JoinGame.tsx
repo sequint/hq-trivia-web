@@ -11,9 +11,11 @@ export default function JoinGame(params: params) {
       <div className={ styles.titleCardContainer }>
         <h5 className={ styles.title }>Join a Game!</h5>
         <div className={ styles.joinGameCard }>
-          <input 
+          <input
+            className={ styles.gameNameInput }
             type='text'
             name='gameName'
+            placeholder='Enter a Game Name'
             defaultValue={ params.gameName }
           />
           <button>Join as User</button>

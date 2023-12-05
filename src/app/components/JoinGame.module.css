@@ -4,7 +4,7 @@
   width: 100dvw;
   height: 270px;
   /* padding-left: 70%; */
-  background-color: white;
+  background-color: whitesmoke;
   border-top-left-radius: 100%;
 }
 
@@ -20,9 +20,23 @@
 }
 
 .joinGameCard {
+  background-color: white;
   margin: 0px auto;
   border-radius: 5px;
-  box-shadow: 1px 1px 3px grey;
+  box-shadow: 2px 2px 15px 2px rgb(189, 189, 189);
   padding: 30px;
   width: 300px;
+}
+
+.gameNameInput {
+  display: block;
+  margin: 0px auto 20px auto;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.gameNameInput:focus {
+  outline: none;
 }
