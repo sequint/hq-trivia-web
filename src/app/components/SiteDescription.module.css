@@ -1,0 +1,13 @@
+.titleContainer {
+  margin-top: 10%;
+  margin-left: 50%;
+}
+
+.characterBkgdImg {
+    position: fixed;
+    top: 20%;
+    z-index: -1;
+    height: 70%;
+    width: 40%;
+    margin-left: 10%;
+}
