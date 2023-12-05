@@ -18,8 +18,8 @@ export default function JoinGame(params: params) {
             placeholder='Enter a Game Name'
             defaultValue={ params.gameName }
           />
-          <button>Join as User</button>
-          <button>Join as Guest</button>
+          <button className={ styles.joinBtn }>Join as User</button>
+          <button className={ styles.joinBtn }>Join as Guest</button>
         </div>
       </div>
     </div>
