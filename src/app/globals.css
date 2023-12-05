@@ -1,3 +1,7 @@
 body {
   background-color: #9C99A5;
 }
+
+p {
+  margin: 0px;
+}

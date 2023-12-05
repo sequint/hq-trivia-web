@@ -1,6 +1,19 @@
+
 .titleContainer {
   margin-top: 10%;
   margin-left: 50%;
+}
+
+.title {
+  font-size: 70px;
+  color: #fff;
+  margin: 0px;
+}
+
+.description {
+  color: #fff;
+  margin-top: 10px;
+  font-size: 20px;
 }
 
 .characterBkgdImg {
