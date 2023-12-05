@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { fredoka } from '../utils/fonts'
-import siteCharacter from '../site-character.png'
+import siteCharacter from '../images/site-character.png'
 import styles from './SiteDescription.module.css'
 
 export default function SiteDescription() {
