@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import SiteDescription from './components/SiteDescription'
+import JoinGame from './components/JoinGame'
 import styles from './page.module.css'
 
 export default function Home() {
@@ -8,7 +9,8 @@ export default function Home() {
   return (
     <main className={ styles.homeContainer }>
       <SiteDescription />
-      <Link href={`/${tempUserName}`}>Go to user home page</Link>
+      {/* <Link href={`/${tempUserName}`}>Go to user home page</Link> */}
+      <JoinGame gameName='' userName='sequint' />
     </main>
   )
 }

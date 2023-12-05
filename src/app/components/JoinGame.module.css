@@ -1,0 +1,28 @@
+.joinGameContainer {
+  position: fixed;
+  bottom: 0;
+  width: 100dvw;
+  height: 270px;
+  /* padding-left: 70%; */
+  background-color: white;
+  border-top-left-radius: 100%;
+}
+
+.titleCardContainer {
+  width: 50dvw;
+  text-align: center;
+  padding: 1% 0 0 50%;
+}
+
+.title {
+  margin: 20px;
+  font-size: 30px;
+}
+
+.joinGameCard {
+  margin: 0px auto;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px grey;
+  padding: 30px;
+  width: 300px;
+}
