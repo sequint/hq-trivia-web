@@ -1,11 +1,8 @@
+import Game from '../interfaces/Game'
 import styles from './JoinGame.module.css'
 
-interface params {
-  gameName: string,
-  userName: string
-}
-
-export default function JoinGame(params: params) {
+export default function JoinGame(params: { game: Game }) {
+  
   return (
     <div className={ styles.joinGameContainer }>
       <div className={ styles.titleCardContainer }>
@@ -16,7 +13,7 @@ export default function JoinGame(params: params) {
             type='text'
             name='gameName'
             placeholder='Enter a Game Name'
-            defaultValue={ params.gameName }
+            defaultValue={ params.game.name }
           />
           <button className={ styles.joinBtn }>Join as User</button>
           <button className={ `${styles.joinBtn} ${styles.guestBtn}` }>Join as Guest</button>
