@@ -19,7 +19,7 @@ export default function JoinGame(params: params) {
             defaultValue={ params.gameName }
           />
           <button className={ styles.joinBtn }>Join as User</button>
-          <button className={ styles.joinBtn }>Join as Guest</button>
+          <button className={ `${styles.joinBtn} ${styles.guestBtn}` }>Join as Guest</button>
         </div>
       </div>
     </div>
