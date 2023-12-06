@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import SiteDescription from './components/SiteDescription'
 import JoinGame from './components/JoinGame'
-import Game from './interfaces/Game'
+import Game from './schemas/Game'
 import styles from './page.module.css'
 
 export default function Home() {

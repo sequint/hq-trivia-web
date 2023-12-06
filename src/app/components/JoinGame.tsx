@@ -1,4 +1,4 @@
-import Game from '../interfaces/Game'
+import Game from '../schemas/Game'
 import styles from './JoinGame.module.css'
 
 export default function JoinGame(params: { game: Game }) {

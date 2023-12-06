@@ -1,4 +1,4 @@
-import Game from '@/app/interfaces/Game'
+import Game from '@/app/schemas/Game'
 
 export default function GameRoom(params: { game: Game }) {
   return (
