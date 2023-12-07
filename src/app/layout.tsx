@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'HQ Trivia',
-  description: 'Custom Trivia Fun!',
+  description: 'HQ Trivia Home Page',
 }
 
 export default function RootLayout({
