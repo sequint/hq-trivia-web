@@ -3,20 +3,20 @@
 import { useState } from 'react';
 import Game from '../schemas/Game'
 import styles from './JoinGame.module.css'
+import Link from 'next/link';
 
 export default function JoinGame(params: { game: Game }) {
   const [errorMessage, setErrorMessage] = useState<string>(' ');
 
   // Temp vars for testing before imp graphql
-  let gameDoesNotExist: boolean = false;
+  let gameDoesNotExist: boolean = true
 
-  function checkForGame(): void {
+  function checkForGame(event: any): void {
     try {
       if (gameDoesNotExist) throw new Error('This game is not active')
-
-      console.log('Go to game') // To be replaced with Link
     }
     catch (error: any) {
+      event.preventDefault(); // Stop href from executing
       setErrorMessage(error.message)
     }
   }
@@ -33,14 +33,20 @@ export default function JoinGame(params: { game: Game }) {
             placeholder='Enter a Game Name'
             defaultValue={ params.game.name }
           />
-          <button 
+          <Link 
             className={ styles.joinBtn }
+            href={`/gameroom/${params.game.name}`}
             onClick={checkForGame}
-          >Join as User</button>
-          <button
+          >
+            Join as User
+          </Link>
+          <Link
             className={ `${styles.joinBtn} ${styles.guestBtn}` }
+            href={`/gameroom/${params.game.name}`}
             onClick={checkForGame}
-          >Join as Guest</button>
+          >
+            Join as Guest
+          </Link>
           <p>{ errorMessage }</p>
         </div>
       </div>
