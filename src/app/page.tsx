@@ -6,12 +6,11 @@ import styles from './page.module.css'
 
 export default function Home() {
   const tempUserName: string = 'sequint'
-  const tempGame: Game = { id: 1, name: 'new game' }
+  const tempGame: Game = { id: 1, name: 'newgame' }
 
   return (
     <main className={ styles.homeContainer }>
       <SiteDescription />
-      {/* <Link href={`/${tempUserName}`}>Go to user home page</Link> */}
       <JoinGame game={tempGame} />
     </main>
   )
