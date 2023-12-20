@@ -1,23 +1,30 @@
 'use client'
 
-import { useState } from 'react';
+import { useState } from 'react'
 import Game from '../schemas/Game'
 import styles from './JoinGame.module.css'
-import Link from 'next/link';
+import Link from 'next/link'
+import { gql, useQuery } from '@apollo/client'
+
+const GET_GAME = gql`
+  query GetGame($name: String!) {
+    game(name: $name) {
+      id
+    }
+  }
+`
 
 export default function JoinGame(params: { game: Game }) {
-  const [errorMessage, setErrorMessage] = useState<string>(' ');
-
-  // Temp vars for testing before imp graphql
-  let gameDoesNotExist: boolean = true
+  const [ gameName ] = useState<string>(params.game.name)
+  const [ errorMessage, setErrorMessage ] = useState<string>(' ')
+  const { error, refetch } = useQuery(GET_GAME)
 
   function checkForGame(event: any): void {
-    try {
-      if (gameDoesNotExist) throw new Error('This game is not active')
-    }
-    catch (error: any) {
-      event.preventDefault(); // Stop href from executing
-      setErrorMessage(error.message)
+    refetch()
+    // If the game does not exist, prevent link event from executing
+    if (error) {
+      setErrorMessage('This game is not active')
+      event.preventDefault()
     }
   }
   
@@ -31,18 +38,18 @@ export default function JoinGame(params: { game: Game }) {
             type='text'
             name='gameName'
             placeholder='Enter a Game Name'
-            defaultValue={ params.game.name }
+            value={ gameName }
           />
           <Link 
             className={ styles.joinBtn }
-            href={`/gameroom/${params.game.name}`}
+            href={`/gameroom/${ gameName }`}
             onClick={checkForGame}
           >
             Join as User
           </Link>
           <Link
             className={ `${styles.joinBtn} ${styles.guestBtn}` }
-            href={`/gameroom/${params.game.name}`}
+            href={`/gameroom/${ gameName }`}
             onClick={checkForGame}
           >
             Join as Guest
