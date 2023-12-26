@@ -1,4 +1,4 @@
 type Game {
   id: ID!
-  name: String
+  name: String @search(by: [fulltext])
 }

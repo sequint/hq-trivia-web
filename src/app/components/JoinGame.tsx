@@ -6,23 +6,30 @@ import styles from './JoinGame.module.css'
 import Link from 'next/link'
 import { gql, useQuery } from '@apollo/client'
 
-const GET_GAME = gql`
-  query GetGame($name: String!) {
-    game(name: $name) {
+const GET_GAME_BY_NAME = gql`
+  query GET_GAME_BY_NAME($gameName: String!) {
+    queryGame(filter: {name: {alloftext: $gameName}}) {
       id
     }
   }
 `
 
 export default function JoinGame(params: { game: Game }) {
-  const [ gameName ] = useState<string>(params.game.name)
+  const [ gameName, setGameName ] = useState<string>(params.game.name)
   const [ errorMessage, setErrorMessage ] = useState<string>(' ')
-  const { error, refetch } = useQuery(GET_GAME)
+  const { data, refetch } = useQuery(GET_GAME_BY_NAME)
+
+  function updateGameName(event: any): void {
+    setGameName(event.target.value)
+  }
 
   function checkForGame(event: any): void {
-    refetch()
+    refetch({
+      gameName: gameName
+    })
+
     // If the game does not exist, prevent link event from executing
-    if (error) {
+    if (!data) {
       setErrorMessage('This game is not active')
       event.preventDefault()
     }
@@ -38,7 +45,8 @@ export default function JoinGame(params: { game: Game }) {
             type='text'
             name='gameName'
             placeholder='Enter a Game Name'
-            value={ gameName }
+            defaultValue={ gameName }
+            onChange={updateGameName}
           />
           <Link 
             className={ styles.joinBtn }
