@@ -13,9 +13,10 @@ The web app also allows for players who don't want to download a native app (com
 ## Technology
 
 - Next.JS
-- React.JS (I still like to say it, since Next is a framework on top of a framework)
-- GraphQL
-- AWS RDS for PostgresSQL
+- React.JS
+- Typescript
+- Apollo GraphQL
+- Dgraph Cloud (AWS)
 
 ## Deployment
 
