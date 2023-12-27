@@ -17,21 +17,29 @@ const GET_GAME_BY_NAME = gql`
 export default function JoinGame(params: { game: Game }) {
   const [ gameName, setGameName ] = useState<string>(params.game.name)
   const [ errorMessage, setErrorMessage ] = useState<string>(' ')
-  const { data, refetch } = useQuery(GET_GAME_BY_NAME)
+  const { refetch } = useQuery(GET_GAME_BY_NAME)
 
-  function updateGameName(event: any): void {
-    setGameName(event.target.value)
-  }
+  async function checkForGame(event: any): Promise<void> {
+    // Ignore default Link route
+    event.preventDefault()
 
-  function checkForGame(event: any): void {
-    refetch({
-      gameName: gameName
-    })
+    // Reset error message
+    setErrorMessage(' ')
 
-    // If the game does not exist, prevent link event from executing
-    if (!data) {
-      setErrorMessage('This game is not active')
-      event.preventDefault()
+    try {
+      // Try getting the game data
+      const queryGameResult = await refetch({ gameName: gameName })
+      const game: Game = queryGameResult.data?.queryGame[0]
+
+      if (!game || !game.id) throw new Error('This game is not active')
+
+      // If the game exists route to that gameroom
+      const href = `/gameroom/${gameName}`
+      window.location.href = href
+    }
+    catch (error: any) {
+      // If the game does not exist, set the error message
+      setErrorMessage(error.message)
     }
   }
   
@@ -46,18 +54,20 @@ export default function JoinGame(params: { game: Game }) {
             name='gameName'
             placeholder='Enter a Game Name'
             defaultValue={ gameName }
-            onChange={updateGameName}
+            onChange={event => setGameName(event.target.value)}
           />
           <Link 
             className={ styles.joinBtn }
-            href={`/gameroom/${ gameName }`}
+            href='/' // Set to root as default if checkForGame fails
+            passHref
             onClick={checkForGame}
           >
             Join as User
           </Link>
           <Link
             className={ `${styles.joinBtn} ${styles.guestBtn}` }
-            href={`/gameroom/${ gameName }`}
+            href='/' // Set to root as default if checkForGame fails
+            passHref
             onClick={checkForGame}
           >
             Join as Guest
