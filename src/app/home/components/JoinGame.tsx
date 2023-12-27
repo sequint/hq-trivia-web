@@ -19,7 +19,7 @@ export default function JoinGame(params: { game: Game }) {
   const [ gameName, setGameName ] = useState<string>(params.game.name)
   const [ errorMessage, setErrorMessage ] = useState<string>(' ')
   const [ loadingDisplay, setLoadingDisplay ] = useState<string>('none')
-  const { refetch, loading } = useQuery(GET_GAME_BY_NAME)
+  const { refetch } = useQuery(GET_GAME_BY_NAME)
 
   async function checkForGame(event: any): Promise<void> {
     // Display loading component
