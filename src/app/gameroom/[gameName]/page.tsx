@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Game from '@/app/schemas/Game'
+import Game from '@/types/Game'
  
 type Props = {
   params: { game: Game, gameName: string }

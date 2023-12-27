@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Game from '../schemas/Game'
+import Game from '../../../types/Game'
 import styles from './JoinGame.module.css'
 import Link from 'next/link'
 import { gql, useQuery } from '@apollo/client'
