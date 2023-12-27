@@ -3,14 +3,12 @@
   bottom: 0;
   width: 100dvw;
   height: 270px;
-  /* padding-left: 70%; */
   background-color: whitesmoke;
   border-top-left-radius: 100%;
 }
 
 .titleCardContainer {
   width: 50dvw;
-  text-align: center;
   padding: 1% 0 0 50%;
 }
 
@@ -21,11 +19,11 @@
 
 .joinGameCard {
   background-color: white;
-  margin: 0px auto;
   border-radius: 5px;
   box-shadow: 2px 2px 15px 2px rgb(189, 189, 189);
   padding: 30px;
   width: 300px;
+  text-align: center;
 }
 
 .gameNameInput {
@@ -59,4 +57,22 @@
 
 .guestBtn {
   color: #52C5C3;
+}
+
+.spinnerContainer {
+  position: absolute;
+  z-index: 1;
+  height: 79px;
+  background-color: rgba(128, 128, 128, 0.192);
+  border-radius: 5px;
+  padding: 30px;
+  width: 300px;
+  text-align: center;
+}
+
+.loadSpinner {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: #52C5C3 !important;
 }

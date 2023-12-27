@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Game from '../../../types/Game'
 import styles from './JoinGame.module.css'
 import Link from 'next/link'
+import CircularProgress from '@mui/material/CircularProgress'
 import { gql, useQuery } from '@apollo/client'
 
 const GET_GAME_BY_NAME = gql`
@@ -17,9 +18,13 @@ const GET_GAME_BY_NAME = gql`
 export default function JoinGame(params: { game: Game }) {
   const [ gameName, setGameName ] = useState<string>(params.game.name)
   const [ errorMessage, setErrorMessage ] = useState<string>(' ')
-  const { refetch } = useQuery(GET_GAME_BY_NAME)
+  const [ loadingDisplay, setLoadingDisplay ] = useState<string>('none')
+  const { refetch, loading } = useQuery(GET_GAME_BY_NAME)
 
   async function checkForGame(event: any): Promise<void> {
+    // Display loading component
+    setLoadingDisplay('block')
+
     // Ignore default Link route
     event.preventDefault()
 
@@ -33,11 +38,17 @@ export default function JoinGame(params: { game: Game }) {
 
       if (!game || !game.id) throw new Error('This game is not active')
 
+      // Remove loading component visability
+      setLoadingDisplay('none')
+
       // If the game exists route to that gameroom
       const href = `/gameroom/${gameName}`
       window.location.href = href
     }
     catch (error: any) {
+      // Remove loading component visability
+      setLoadingDisplay('none')
+
       // If the game does not exist, set the error message
       setErrorMessage(error.message)
     }
@@ -47,6 +58,12 @@ export default function JoinGame(params: { game: Game }) {
     <div className={ styles.joinGameContainer }>
       <div className={ styles.titleCardContainer }>
         <h5 className={ styles.title }>Join a Game!</h5>
+        <div
+          className={ styles.spinnerContainer }
+          style={{display: loadingDisplay }}
+        >
+          <CircularProgress className={ styles.loadSpinner } />
+        </div>
         <div className={ styles.joinGameCard }>
           <input
             className={ styles.gameNameInput }
