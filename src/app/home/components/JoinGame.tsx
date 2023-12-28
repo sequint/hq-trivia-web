@@ -55,42 +55,40 @@ export default function JoinGame(params: { game: Game }) {
   }
   
   return (
-    <div className={ styles.joinGameContainer }>
-      <div className={ styles.titleCardContainer }>
-        <h5 className={ styles.title }>Join a Game!</h5>
-        <div
-          className={ styles.spinnerContainer }
-          style={{display: loadingDisplay }}
+    <div className={ styles.titleCardContainer }>
+      <h5 className={ styles.title }>Join a Game!</h5>
+      <div
+        className={ styles.spinnerContainer }
+        style={{display: loadingDisplay }}
+      >
+        <CircularProgress className={ styles.loadSpinner } />
+      </div>
+      <div className={ styles.joinGameCard }>
+        <input
+          className={ styles.gameNameInput }
+          type='text'
+          name='gameName'
+          placeholder='Enter a Game Name'
+          defaultValue={ gameName }
+          onChange={event => setGameName(event.target.value)}
+        />
+        <Link 
+          className={ styles.joinBtn }
+          href='/' // Set to root as default if checkForGame fails
+          passHref
+          onClick={checkForGame}
         >
-          <CircularProgress className={ styles.loadSpinner } />
-        </div>
-        <div className={ styles.joinGameCard }>
-          <input
-            className={ styles.gameNameInput }
-            type='text'
-            name='gameName'
-            placeholder='Enter a Game Name'
-            defaultValue={ gameName }
-            onChange={event => setGameName(event.target.value)}
-          />
-          <Link 
-            className={ styles.joinBtn }
-            href='/' // Set to root as default if checkForGame fails
-            passHref
-            onClick={checkForGame}
-          >
-            Join as User
-          </Link>
-          <Link
-            className={ `${styles.joinBtn} ${styles.guestBtn}` }
-            href='/' // Set to root as default if checkForGame fails
-            passHref
-            onClick={checkForGame}
-          >
-            Join as Guest
-          </Link>
-          <p>{ errorMessage }</p>
-        </div>
+          Join as User
+        </Link>
+        <Link
+          className={ `${styles.joinBtn} ${styles.guestBtn}` }
+          href='/' // Set to root as default if checkForGame fails
+          passHref
+          onClick={checkForGame}
+        >
+          Join as Guest
+        </Link>
+        <p>{ errorMessage }</p>
       </div>
     </div>
   )
