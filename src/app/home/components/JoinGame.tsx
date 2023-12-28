@@ -6,6 +6,7 @@ import styles from './JoinGame.module.css'
 import Link from 'next/link'
 import CircularProgress from '@mui/material/CircularProgress'
 import { gql, useQuery } from '@apollo/client'
+import { fredoka } from '../../../utils/fonts'
 
 const GET_GAME_BY_NAME = gql`
   query GET_GAME_BY_NAME($gameName: String!) {
@@ -55,8 +56,8 @@ export default function JoinGame(params: { game: Game }) {
   }
   
   return (
-    <div className={ styles.titleCardContainer }>
-      <h5 className={ styles.title }>Join a Game!</h5>
+    <div className={ styles.joinGameContainer }>
+      <h5 className={ `${fredoka.className} ${styles.title}` }>Join a Game!</h5>
       <div
         className={ styles.spinnerContainer }
         style={{display: loadingDisplay }}
