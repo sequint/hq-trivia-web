@@ -1,17 +1,29 @@
 .outerContainer {
-  width: 100%;
+  width: 100dvw;
 }
 
 .navBtnContainer {
-  width: 50%;
+  width: 50dvw;
   margin: 20px auto 0px auto;
+  text-align: center;
 }
 
 .homeNavBtn {
-  display: block;
+  display: inline-flex;
   text-decoration: none;
   border: solid 3px;
   border-radius: 50px;
   padding: 15px 40px;
   width: 60px;
+  margin: 10px;
+}
+
+.signInBtn {
+  color: black;
+  border-color: black;
+}
+
+.signUpBtn {
+  color: #7D6B91;
+  border-color: #7D6B91;
 }
