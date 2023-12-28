@@ -1,6 +1,6 @@
 'use client'
 
-import SiteDescription from './components/SiteDescription'
+import SiteTitle from './components/SiteTitle'
 import JoinGame from './components/JoinGame'
 import Game from '../../types/Game'
 import HomeNav from './components/HomeNav'
@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <main>
       <HomeNav />
-      <SiteDescription />
+      <SiteTitle />
       <JoinGame game={tempGame} />
     </main>
   )
