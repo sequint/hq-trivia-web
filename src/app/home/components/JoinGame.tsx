@@ -37,20 +37,17 @@ export default function JoinGame(params: { game: Game }) {
       const queryGameResult = await refetch({ gameName: gameName })
       const game: Game = queryGameResult.data?.queryGame[0]
 
-      if (!game || !game.id) throw new Error('This game is not active')
-
       // Remove loading component visability
       setLoadingDisplay('none')
+
+      // If the game does not exist throw an error message
+      if (!game || !game.id) throw new Error('This game is not active')
 
       // If the game exists route to that gameroom
       const href = `/gameroom/${gameName}`
       window.location.href = href
     }
     catch (error: any) {
-      // Remove loading component visability
-      setLoadingDisplay('none')
-
-      // If the game does not exist, set the error message
       setErrorMessage(error.message)
     }
   }
