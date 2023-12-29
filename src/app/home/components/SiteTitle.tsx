@@ -4,7 +4,7 @@ import styles from './SiteTitle.module.css'
 export default function SiteTitle() {
   return (
     <h1 className={ `${fredoka.className} ${styles.title}` }>
-      Trivia
+      gemer
     </h1>
   )
 }
