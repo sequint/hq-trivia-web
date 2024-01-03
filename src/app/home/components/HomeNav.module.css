@@ -23,7 +23,15 @@
   border-color: black;
 }
 
+.signInBtn:hover {
+  background-color: #7d6b9142;
+}
+
 .signUpBtn {
   color: #7D6B91;
   border-color: #7D6B91;
+}
+
+.signUpBtn:hover {
+  background-color: rgba(0, 0, 0, 0.10);
 }
