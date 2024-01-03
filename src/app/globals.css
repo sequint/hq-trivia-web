@@ -2,6 +2,10 @@ body {
   margin: 0px;
 }
 
+main {
+  height: 100dvh;
+}
+
 p {
   margin: 0px;
 }

@@ -1,9 +1,10 @@
 'use client'
 
+import HomeLogo from './components/HomeLogo'
+import HomeNav from './components/HomeNav'
 import SiteTitle from './components/SiteTitle'
 import JoinGame from './components/JoinGame'
 import Game from '../../types/Game'
-import HomeNav from './components/HomeNav'
 import styles from './HomePage.module.css'
 
 export default function HomePage() {
@@ -11,6 +12,7 @@ export default function HomePage() {
 
   return (
     <main>
+      {/* <HomeLogo /> */}
       <HomeNav />
       <div className={styles.centerContent}>
         <SiteTitle />
