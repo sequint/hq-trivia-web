@@ -57,8 +57,10 @@
   background-color: rgba(128, 128, 128, 0.192);
   border-radius: 5px;
   padding: 30px;
-  width: 300px;
-  text-align: center;
+  width: 250px;
+  margin: auto;
+  left: 0;
+  right: 0;
 }
 
 .loadSpinner {
