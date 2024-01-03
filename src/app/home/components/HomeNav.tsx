@@ -12,7 +12,7 @@ export default function HomeNav() {
         </Link>
         <Link
           className={`${styles.homeNavBtn} ${styles.signUpBtn}`}
-          href='/signin'>
+          href='/signup'>
             Sign Up
         </Link>
       </div>
