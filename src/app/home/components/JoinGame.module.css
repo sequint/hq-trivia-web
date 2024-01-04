@@ -58,9 +58,6 @@
   border-radius: 5px;
   padding: 30px;
   width: 250px;
-  margin: auto;
-  left: 0;
-  right: 0;
 }
 
 .loadSpinner {
@@ -68,4 +65,12 @@
   margin-left: auto;
   margin-right: auto;
   color: #7D6B91 !important;
+}
+
+@media (max-width: 800px) {
+  .spinnerContainer {
+    margin: auto;
+    left: 0;
+    right: 0;
+  }
 }
