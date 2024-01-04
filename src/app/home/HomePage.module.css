@@ -1,5 +1,26 @@
-.centerContent {
+.midPageContainer {
+  display: flex;
   width: 100dvw;
+}
+
+.logo {
+  width: 50dvw;
+  text-align: right;
+}
+
+.centerContent {
   text-align: center;
   margin-top: 100px;
+}
+
+@media (max-width: 800px) {
+  .midPageContainer {
+    flex-direction: column;
+  }
+  .logo {
+    display: none;
+  }
+  .centerContent {
+    width: auto;
+  }
 }

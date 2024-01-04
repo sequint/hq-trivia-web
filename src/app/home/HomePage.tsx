@@ -12,11 +12,15 @@ export default function HomePage() {
 
   return (
     <main>
-      {/* <HomeLogo /> */}
       <HomeNav />
-      <div className={styles.centerContent}>
-        <SiteTitle />
-        <JoinGame game={tempGame} />
+      <div className={ styles.midPageContainer }>
+        <div className={ styles.logo }>
+          <HomeLogo />
+        </div>
+        <div className={styles.centerContent}>
+          <SiteTitle />
+          <JoinGame game={tempGame} />
+        </div>
       </div>
     </main>
   )
