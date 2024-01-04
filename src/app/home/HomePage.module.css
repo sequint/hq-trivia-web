@@ -18,7 +18,11 @@
     flex-direction: column;
   }
   .logo {
-    display: none;
+    position: absolute;
+    z-index: -1;
+    top: 20px;
+    left: 20px;
+    text-align: left;
   }
   .centerContent {
     width: auto;
