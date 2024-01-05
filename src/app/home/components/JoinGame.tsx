@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Game from '../../../types/Game'
 import styles from './JoinGame.module.css'
-import Link from 'next/link'
 import CircularProgress from '@mui/material/CircularProgress'
 import { gql, useQuery } from '@apollo/client'
 import { fredoka } from '../../../utils/fonts'
@@ -21,6 +21,11 @@ export default function JoinGame(params: { game: Game }) {
   const [ errorMessage, setErrorMessage ] = useState<string>(' ')
   const [ loadingDisplay, setLoadingDisplay ] = useState<string>('none')
   const { refetch } = useQuery(GET_GAME_BY_NAME)
+  const router = useRouter()
+  
+  const noGameError = new Error()
+  noGameError.message = 'This game is not active'
+  noGameError.name = 'noGame'
 
   async function checkForGame(event: any): Promise<void> {
     // Display loading component
@@ -40,15 +45,19 @@ export default function JoinGame(params: { game: Game }) {
       // Remove loading component visability
       setLoadingDisplay('none')
 
-      // If the game does not exist throw an error message
-      if (!game || !game.id) throw new Error('This game is not active')
+      // If the game does not exist throw no game error
+      if (!game || !game.id) throw noGameError
 
       // If the game exists route to that gameroom
-      const href = `/gameroom/${gameName}`
-      window.location.href = href
+      router.push(`/gameroom/${gameName}`)
     }
     catch (error: any) {
-      setErrorMessage(error.message)
+      if (error.name === 'noGame') {
+        setErrorMessage(error.message)
+      }
+      else {
+        setErrorMessage('This page did not load properly\nPlease try again')
+      }
     }
   }
   
@@ -70,22 +79,20 @@ export default function JoinGame(params: { game: Game }) {
           defaultValue={ gameName }
           onChange={event => setGameName(event.target.value)}
         />
-        <Link 
-          className={ styles.joinBtn }
-          href='/' // Set to root as default if checkForGame fails
-          passHref
-          onClick={checkForGame}
-        >
-          Join as User
-        </Link>
-        <Link
-          className={ `${styles.joinBtn} ${styles.guestBtn}` }
-          href='/' // Set to root as default if checkForGame fails
-          passHref
-          onClick={checkForGame}
-        >
-          Join as Guest
-        </Link>
+        <div>
+          <button 
+            className={ styles.joinBtn }
+            onClick={checkForGame}
+          >
+            Join as User
+          </button>
+          <button
+            className={ `${styles.joinBtn} ${styles.guestBtn}` }
+            onClick={checkForGame}
+          >
+            Join as Guest
+          </button>
+        </div>
         <p>{ errorMessage }</p>
       </div>
     </div>
